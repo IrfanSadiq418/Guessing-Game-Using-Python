@@ -1,0 +1,32 @@
+from random import randint
+secret_number=randint(1,50)
+
+print("-------------GUESSING GAME----------")
+i=0
+
+#There are five total guesses. So running the loop for 5 times
+while i<=5:
+    i=i+1
+    
+#when user runs out of guesses.   
+    if 6-i==0:
+        print("Game Over!")
+
+#when user have remaining guesses.
+    else:
+        try:
+            user_guess=int(input("Guess the Secret Number (between 1 and 50) ="))
+            if user_guess==secret_number:
+                print(f"Congratulations! You guessed the secret number {secret_number} correctly!")
+                break                                 #Loop to break if user guesses the number right.
+            elif user_guess>=100:
+                print(f"Try again! Your guess is too high. You have {5-i} attempts left.")
+                print(f"\n------------CHANCE {i+1}----------------")
+            else:
+                print(f"Try again! You have {5-i} attempts left.")
+                print(f"\n------------CHANCE {i+1}----------------")
+        
+#When user enters value that can not be converted to integer.
+        except:
+            print("Invalid input! Please enter a valid number")
+            i=i-1
